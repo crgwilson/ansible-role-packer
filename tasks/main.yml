@@ -1,0 +1,22 @@
+---
+- name: Ensure unzip is installed
+  package:
+    name: unzip
+    state: present
+
+- name: Download Packer
+  get_url:
+    url: "{{ packer_download_url }}"
+    dest: "{{ packer_install_dir }}"
+    checksum: "{{ packer_download_checksum }}"
+
+- name: Install Packer
+  unarchive:
+    src: "{{ packer_install_dir }}/packer_{{ packer_version }}_{{ packer_dist }}_{{ packer_arch }}.zip"
+    dest: "{{ packer_install_dir }}"
+    creates: "{{ packer_install_dir }}/packer"
+    remote_src: true
+    owner: "{{ packer_owner }}"
+    group: "{{ packer_group }}"
+    mode: 0755
+

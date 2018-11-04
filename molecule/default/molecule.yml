@@ -1,0 +1,41 @@
+---
+driver:
+  name: docker
+  command: ${MOLECULE_DOCKER_COMMAND:-""}
+  volumes:
+    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  privileged: true
+lint:
+  name: yamllint
+platforms:
+  - name: centos7
+    image: centos:7
+  - name: debian9
+    image: debian:9
+  - name: ubuntu18.10
+    image: ubuntu:18.10
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../..
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+  #  - verify # testinfra dies on pytest for some reason
+    - destroy
+verifier:
+  name: testinfra
+  line: flake8
+  options:
+    verbose: true
+

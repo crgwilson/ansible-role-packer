@@ -1,0 +1,35 @@
+---
+packer_install_dir: /usr/local/bin
+packer_owner: root
+packer_group: root
+
+packer_version: 1.3.2
+packer_dist: linux
+packer_arch: amd64
+packer_download_url: "https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_{{ packer_dist }}_{{ packer_arch }}.zip"
+packer_download_checksums:
+  1.3.2:
+    darwin:
+      386: sha256:0023ccac8f332dca2082ecd11e1037bf14c95c66e8eaeabf8454d2ded8e12784
+      amd64: sha256:1c2433239d801b017def8e66bbff4be3e7700b70248261b0abff2cd9c980bf5b
+    freebsd:
+      386: sha256:b26ffeb216c3f79fdb3d93ae479cd443743f50c8f23a509fd0beba5a77d611db
+      amd64: sha256b4cf91504cf320e0c3e7df209d6e43b862374a18310828067315306df5bb5ea9
+      arm: sha256:95d31c4568756e388981c3e9c93263b7293a3f9e0db5f15071d6b43d9db728df
+    linux:
+      386: sha256:136747816af8d4643afd54a1e6c15480cdde9ea16c8ebf32aee0e48cd7919656
+      amd64: sha256:5e51808299135fee7a2e664b09f401b5712b5ef18bd4bad5bc50f4dcd8b149a1
+      arm: sha256:1ec7416ebf6170c34b4005363eaed5ae8611b7816f0806c36ed17602b0661622
+      arm64: sha256:988a7d3662083930c1015dff7aee1185de8c51ec61ac254efd5b8b46d232aba3
+      ppc64le: sha256:f3a2aec3a0a54d5d9cc6047f52acb73202b30efea770d4627459ca5608e58ac1
+    openbsd:
+      386: sha256:efeb9e2599e1f93d63355ef221a5f29a70589fd43185ae26b244fbc2a5a261a0
+      amd64: sha256:719d4dc120730acda68fa0fd2ef74c3da10b748a18b95a9eb264a2338b57b7a8
+    solaris:
+      amd64: sha256:afd90a731e63ec45a5bbc0c2cc0ce7b740d9568fc7fd9370f8f300b967ad1097
+    windows:
+      386: sha256:99a16064e60776922ae9cb1bef9e9ec8311511f735b1332a811817d3f93171f2
+      amd64: sha256:b0fa064bc29820f330669b3bc790e61eb1c8a873ae8d5134e580b3b16ef50e60
+
+packer_download_checksum: "{{ packer_download_checksums[packer_version][packer_dist][packer_arch] }}"
+

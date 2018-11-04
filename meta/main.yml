@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: crgwilson
+  description: Install Hashicorp Packer
+
+  min_ansible_version: 2.0
+
+  platforms:
+    - name: CentOS
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
+
