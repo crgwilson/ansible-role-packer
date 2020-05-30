@@ -1,5 +1,7 @@
 # Role: Packer
 
+![Molecule Test](https://github.com/crgwilson/ansible-role-packer/workflows/Molecule%20Test/badge.svg)
+
 Install [Hashicorp Packer](https://www.packer.io/). A tool for building machine images.
 
 ## Whats it do?
