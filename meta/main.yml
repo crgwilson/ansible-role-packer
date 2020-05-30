@@ -13,9 +13,6 @@ galaxy_info:
       versions:
         - stretch
         - buster
-    - name: Ubuntu
-      versions:
-        - 18.04
 
   galaxy_tags: []
 
