@@ -7,6 +7,8 @@ driver:
   privileged: true
 lint:
   name: yamllint
+  options:
+    config-file: molecule/yamllint.yml
 platforms:
   - name: centos7
     image: centos:7
