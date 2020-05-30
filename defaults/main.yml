@@ -32,4 +32,3 @@ packer_download_checksums:
       amd64: sha256:b0fa064bc29820f330669b3bc790e61eb1c8a873ae8d5134e580b3b16ef50e60
 
 packer_download_checksum: "{{ packer_download_checksums[packer_version][packer_dist][packer_arch] }}"
-
