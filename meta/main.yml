@@ -7,13 +7,15 @@ galaxy_info:
   platforms:
     - name: CentOS
       versions:
-        - all
+        - 7
+        - 8
     - name: Debian
       versions:
-        - all
+        - stretch
+        - buster
     - name: Ubuntu
       versions:
-        - all
+        - 18.04
 
   galaxy_tags: []
 
