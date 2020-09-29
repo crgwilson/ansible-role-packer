@@ -1,14 +1,11 @@
 ---
 driver:
   name: docker
-  command: ${MOLECULE_DOCKER_COMMAND:-""}
-  volumes:
-    - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  privileged: true
 lint:
-  name: yamllint
-  options:
-    config-file: molecule/yamllint.yml
+  set -e
+  yamllint **/*.yml -c molecule/yamllint.yml
+  ansible-lint
+  flake8
 platforms:
   - name: debian9
     image: geerlingguy/docker-debian9-ansible
@@ -38,28 +35,5 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-provisioner:
-  name: ansible
-  lint:
-    name: ansible-lint
-  env:
-    ANSIBLE_ROLES_PATH: ../../..
-scenario:
-  name: default
-  test_sequence:
-    - lint
-    - dependency
-    - syntax
-    - create
-    - prepare
-    - converge
-    - idempotence
-    - side_effect
-  #  - verify # testinfra dies on pytest for some reason
-    - destroy
 verifier:
   name: testinfra
-  line: flake8
-  options:
-    verbose: true
-
